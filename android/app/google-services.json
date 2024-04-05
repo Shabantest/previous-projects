@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "74295155744",
+    "firebase_url": "https://nectar-app-d8894-default-rtdb.firebaseio.com",
+    "project_id": "nectar-app-d8894",
+    "storage_bucket": "nectar-app-d8894.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:74295155744:android:9d06565b1a6efe83913045",
+        "android_client_info": {
+          "package_name": "com.example.graduation_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4YXx10p61r8AvzfRJ46-JgIrAG5gTZao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
