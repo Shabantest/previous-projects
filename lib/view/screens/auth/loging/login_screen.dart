@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:graduation_project/i10/local_keys.g.dart';
 import 'package:graduation_project/view/componants/bottom_navigaton_bar.dart';
 import '../../../../view_model/cubit/user_cubit/user_cubit.dart';
@@ -119,15 +120,21 @@ class LoginScreen extends StatelessWidget {
                        SizedBox(
                         height: 30.h,
                       ),
-                      MaterialButtonCusttom(
+                      MaterialButtonCustom(
                           color: AppColors.Orange,
-                          textcolor: AppColors.white,
+                          textColor: AppColors.white,
                           text:LocaleKeys.Login.tr(),
                           onPressed: () {
                             if (cubit.formKey.currentState!.validate()) {
                               cubit.loginUserFirebase();
                               if(state is UserLoginSuccessState){
                                 Navigation.pushAndremove(context, const BottomNavigationCustom());
+                                Fluttertoast.showToast(
+                                    msg: "login success ",
+                                    backgroundColor:AppColors.Orange,
+                                    fontSize: 15,
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    textColor: AppColors.white);
                               }
                             }
                           }),

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project/i10/local_keys.g.dart';
-import 'package:graduation_project/view/screens/check_out/sections/payment_section.dart';
 import 'package:graduation_project/view_model/cubit/cart_cubit/product_mange_states.dart';
 import '../../../../view_model/uitils/Colors.dart';
 import '../../../../view_model/uitils/Text_custom.dart';
@@ -12,8 +11,9 @@ import '../../../view_model/cubit/cart_cubit/product_mange_cubit.dart';
 import '../../../view_model/uitils/icons.dart';
 import '../../componants/material_Button.dart';
 import '../order_accepted/orderScreen.dart';
+import '../payment/payment_screen.dart';
 import 'component/checkout_options_widget.dart';
-import 'sections/delivery_sction.dart';
+import '../delivery/delivery_sction.dart';
 import 'sections/promo_code_sction.dart';
 class CheckOutDialogWidget extends StatelessWidget {
   const CheckOutDialogWidget({super.key});
@@ -23,7 +23,6 @@ class CheckOutDialogWidget extends StatelessWidget {
       builder: (context, state) {
         var cartCubit=ProductMangeCubit.get(context);
      return   AlertDialog(
-          backgroundColor: const Color.fromRGBO(237, 247, 236, 1),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusDirectional.circular(15.r),
             side:  BorderSide(
@@ -54,7 +53,7 @@ class CheckOutDialogWidget extends StatelessWidget {
                   name: LocaleKeys.Delivery.tr(),
                   title: LocaleKeys.DeliveryAddress.tr(),
                   onPressed: () {
-                    Navigation.push(context,  DeliveryScreen());
+                    Navigation.push(context,  const DeliveryScreen());
                   },
                 ),
                 CheckOutOptionsWidget(
@@ -69,13 +68,13 @@ class CheckOutDialogWidget extends StatelessWidget {
                   icon: AppIcons.arrow_back,
                   name: LocaleKeys.Payment.tr(),
                   onPressed: () {
-                    Navigation.push(context,  const CheckoutPage());
+                    Navigation.push(context,   const PaymentScreen());
                   },
                 ),
                 CheckOutOptionsWidget(
                   icon: AppIcons.arrow_back,
                   name: LocaleKeys.TotalCost.tr(),
-                  title: '\$ ${cartCubit.totalAmount.toInt()} ',
+                  title: ' £ ${cartCubit.totalAmount.toInt()} ',
                   onPressed: () {},
                 ),
                  SizedBox(
@@ -97,9 +96,9 @@ class CheckOutDialogWidget extends StatelessWidget {
           actions: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: MaterialButtonCusttom(
+              child: MaterialButtonCustom(
                 color: AppColors.green,
-                textcolor: AppColors.white,
+                textColor: AppColors.white,
                 text: LocaleKeys.PlaceOrder.tr(),
                 onPressed: () {
                   Navigation.push(context, const OrderScreen());

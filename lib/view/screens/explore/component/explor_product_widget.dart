@@ -19,9 +19,8 @@ class ExploreProductWidget extends StatelessWidget {
             width: 200.w,
             decoration: BoxDecoration(
               borderRadius: BorderRadiusDirectional.circular(18.r),
-              border:   Border.all(color: AppColors.orange, width: 1.w,
+              border:   Border.all(color: AppColors.gray, width: 1.w,
               ),
-              color: const Color.fromRGBO(83, 177, 117, 0.1),
             ),
             child: Padding(
               padding:  EdgeInsets.all(3.w),

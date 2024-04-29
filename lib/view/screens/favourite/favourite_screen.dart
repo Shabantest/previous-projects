@@ -17,7 +17,6 @@ class FavouriteScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.deepGreen,
         centerTitle: true,
         title: TextCustom(
        text:  LocaleKeys.Favorite.tr(),
@@ -64,9 +63,9 @@ class FavouriteScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal: 20.w),
-                    child: MaterialButtonCusttom(
+                    child: MaterialButtonCustom(
                       color: AppColors.green,
-                      textcolor: AppColors.white,
+                      textColor: AppColors.white,
                       text:LocaleKeys.AddAllToCart.tr(),onPressed: () {
 
                           for(var i in cubit.favouriteProducts){

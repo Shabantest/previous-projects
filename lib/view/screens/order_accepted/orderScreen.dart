@@ -8,7 +8,6 @@ import '../../../../view_model/uitils/navigation.dart';
 import '../../componants/bottom_navigaton_bar.dart';
 import '../../componants/material_Button.dart';
 import '../../componants/text_button.dart';
-import '../cart/cart_screen.dart';
 
 class OrderScreen extends StatelessWidget {
   const OrderScreen({super.key});
@@ -37,9 +36,9 @@ class OrderScreen extends StatelessWidget {
                 color: AppColors.gray,
                 textAlign: TextAlign.center,
               ),
-              MaterialButtonCusttom(
+              MaterialButtonCustom(
                 color: AppColors.green,
-                textcolor: AppColors.white,
+                textColor: AppColors.white,
                 text: "Track Order",
                 onPressed: () {
                 },
@@ -48,7 +47,7 @@ class OrderScreen extends StatelessWidget {
                 style: const TextStyle(color: AppColors.green),
                 text: "Back to home",
                 onPressed: () {
-                  Navigation.push(context, BottomNavigationCustom());
+                  Navigation.push(context, const BottomNavigationCustom());
                 },
               )
             ],

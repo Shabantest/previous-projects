@@ -48,10 +48,11 @@ class _BottomNavigationCustomState extends State<BottomNavigationCustom> {
             });
           },
           showUnselectedLabels: true,
-            selectedItemColor: AppColors.Orange,
-            unselectedItemColor:AppColors.green,
+            selectedItemColor: AppColors.green,
+            unselectedItemColor:AppColors.black,
             items:   [
           BottomNavigationBarItem(
+            backgroundColor: Colors.transparent,
             icon: AppIcons.shop,
             label: LocaleKeys.Shop.tr(),
           ),

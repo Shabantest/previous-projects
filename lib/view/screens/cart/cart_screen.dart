@@ -18,7 +18,6 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.deepGreen,
         centerTitle: true,
         title: TextCustom(
           text: LocaleKeys.MyCart.tr(),
@@ -52,22 +51,21 @@ class CartScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ListView.separated(
+                          clipBehavior: Clip.none,
                         itemBuilder: (context, index) => CartProductWidget(
                           onPressed: () {
                             cubit.removeFromCart(index);
                           },
                           cartProduct: cubit.cartProducts[index],
                         ),
-                        separatorBuilder: (context, index) =>  SizedBox(
-                          height: 10.h,
-                        ),
+                        separatorBuilder: (context, index) => const Divider(height: 1,color: AppColors.gray,),
                         itemCount: cubit.cartProducts.length),
                   ),
                   Padding(
                     padding:  EdgeInsets.symmetric(horizontal: 20.w),
-                    child: MaterialButtonCusttom(
+                    child: MaterialButtonCustom(
                       color: AppColors.green,
-                      textcolor: AppColors.white,
+                      textColor: AppColors.white,
                       text: LocaleKeys.GoToCheckout.tr(),
                       onPressed: () {
                         if (cubit.cartProducts.isNotEmpty) {

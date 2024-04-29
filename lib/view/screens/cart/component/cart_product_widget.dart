@@ -20,13 +20,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
   Widget build(BuildContext context) {
     var cubit=ProductMangeCubit.get(context);
     return Container(
-      margin:  EdgeInsetsDirectional.all(5.w),
-      padding:  EdgeInsets.all(10.w),
-      decoration: BoxDecoration(
-        color:  const Color.fromRGBO(237, 247, 236,1),
-        borderRadius: BorderRadius.circular(10.r),
-        border: Border.all(width: 1.w,color: Colors.orange),
-      ),
+      padding:  EdgeInsets.all(5.w),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -62,10 +56,10 @@ class _CartProductWidgetState extends State<CartProductWidget> {
               children: [
                 IconButton(
                   onPressed:widget.onPressed,
-                  icon: const Icon(Icons.delete,color: AppColors.red,),
+                  icon: const Icon(Icons.delete_forever,color: AppColors.red,),
                 ),
                 MaterialButton(
-                  color: AppColors.green,
+                  color: AppColors.white,
                   highlightColor: AppColors.Orange,
                   height: 10.h,
                   shape: const CircleBorder(
@@ -78,7 +72,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                       });
                     }
                   },
-                  child: const Icon(Icons.remove,color: AppColors.white,),
+                  child: const Icon(Icons.remove,color: AppColors.blueGrey,),
                 ),
                 TextCustom(
                   text: "${cubit.productCounter}",
@@ -86,7 +80,7 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                   color: AppColors.gray2,
                 ),
                 MaterialButton(
-                  color: AppColors.green,
+                  color: AppColors.white,
                   highlightColor: AppColors.Orange,
                   height: 10.h,
                   shape: const CircleBorder(
@@ -97,10 +91,10 @@ class _CartProductWidgetState extends State<CartProductWidget> {
                       cubit.productCounter++;
                     });
                   },
-                  child: const Icon(Icons.add,color: AppColors.white,),
+                  child: const Icon(Icons.add,color: AppColors.blueGrey,),
                 ),
                 TextCustom(
-                  text: "  ${widget.cartProduct.price?? 0}" ,
+                  text: " £ ${widget.cartProduct.price?? 0}" ,
                   fontSize: 18.sp,
                   color: AppColors.green,
                   fontWeight: FontWeight.bold,

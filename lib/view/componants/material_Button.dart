@@ -1,15 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../view_model/uitils/Colors.dart';
 
-class MaterialButtonCusttom extends StatelessWidget {
+class MaterialButtonCustom extends StatelessWidget {
   String text;
   Color? color;
-  Color? textcolor;
+  Color? textColor;
+  IconData? icon;
   void Function()? onPressed;
-  MaterialButtonCusttom(
-      {this.textcolor,
+  MaterialButtonCustom(
+      {this.textColor,
+        this.icon,
       this.color,
       this.onPressed,
       required this.text,
@@ -25,7 +28,7 @@ class MaterialButtonCusttom extends StatelessWidget {
       ),
       height: 55.h,
       minWidth: 353.w,
-      textColor: textcolor,
+      textColor: textColor,
       color: color,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,

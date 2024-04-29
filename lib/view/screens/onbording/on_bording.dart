@@ -42,9 +42,9 @@ class OnBoarding extends StatelessWidget {
               ),
               Padding(
                 padding:  EdgeInsets.only(right: 30.w, left: 30.w, bottom: 30.w),
-                child: MaterialButtonCusttom(
+                child: MaterialButtonCustom(
                     color: AppColors.Orange,
-                    textcolor: AppColors.white,
+                    textColor: AppColors.white,
                     text:LocaleKeys.GetStarted.tr(),
                     onPressed: () {
                       Navigation.push(context, const LoginScreen());

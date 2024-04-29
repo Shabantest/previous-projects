@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,7 +44,7 @@ class PromoCodeScreen extends StatelessWidget {
              TextFormField(
                controller: cubit.promoCodeController,
                decoration: InputDecoration(
-                 hintText:" xxxxx" ,
+                 hintText:" xxx-xxx" ,
                  hintStyle:  const TextStyle(
                    color: AppColors.green,
                  ),
@@ -55,17 +56,17 @@ class PromoCodeScreen extends StatelessWidget {
                  ),
                  border: OutlineInputBorder(
                    borderRadius: BorderRadius.circular(15.r),
-                   borderSide:  BorderSide(color:Colors.blue,width: 1.w),
+                   borderSide:  BorderSide(color:AppColors.Orange,width: 1.w),
                  )
                ),
              ),
-                SizedBox(height: 50.h,),
+                Flexible(child: SizedBox(height: 50.h,)),
               Padding(
                 padding:   EdgeInsetsDirectional.symmetric(horizontal: 40.h),
-                child: MaterialButtonCusttom(
+                child: MaterialButtonCustom(
                   text: LocaleKeys.Send.tr(),
-                  color: Colors.blue,
-                  textcolor: Colors.white,
+                  color: AppColors.green,
+                  textColor: Colors.white,
                   onPressed: () {
 
                   },

@@ -15,15 +15,15 @@ class AccountOptionsWidget extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding:  EdgeInsets.symmetric(vertical: 16.w),
+            padding:  EdgeInsets.symmetric(vertical: 10.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(accountOptions.icon!,width: 30.w,height: 30.h,),
+                Image.asset(accountOptions.icon!,width: 20.w,height: 20.h,),
                  SizedBox(width: 6.w),
                 Expanded(child: TextCustom(
                   text: accountOptions.name!.tr(),
-                  fontSize: 20.sp,
+                  fontSize: 18.sp,
                   color: AppColors.black,
                 )),
                 accountOptions.nextArrow!,

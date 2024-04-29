@@ -20,32 +20,11 @@ class AllExclusiveOfferScreen extends StatelessWidget {
         var cubit = ProductCubit.get(context);
         var carCubit = ProductMangeCubit.get(context);
         if(state is GetProductLoadingState){
-          return Scaffold(
-            backgroundColor: AppColors.deepGreen,
-            body:  SafeArea(
-              child: Center(
-                child: Column(
-                  children: [
-                    TextCustom(
-                      text: LocaleKeys.ExclusiveOffer.tr(),
-                      fontWeight: FontWeight.bold,
-                      color: CupertinoColors.black,
-                      fontSize: 24,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                 const CircularProgressIndicator(
-                   color: AppColors.green,
-                 ),
-                  ],
-                ),
-              ),
-            ),
+          return const CircularProgressIndicator(
+            color: AppColors.green,
           );
         }else{
           return Scaffold(
-            backgroundColor: AppColors.deepGreen,
             body:  SafeArea(
               child: Center(
                 child: Column(
@@ -70,6 +49,8 @@ class AllExclusiveOfferScreen extends StatelessWidget {
                             mainAxisSpacing: 10,
                           ),
                           itemBuilder: (context, index) => ProductWidget(
+                            imageHeight: 100,
+                              imageWidth: 100,
                               onTap: () {
                                 carCubit.addToFavourite(cubit.exclusiveProducts[index]);
                               },

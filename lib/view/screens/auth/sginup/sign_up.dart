@@ -89,6 +89,7 @@ class SignUpScreen extends StatelessWidget {
                               if ((value ?? '').isEmpty) {
                                 return LocaleKeys.pleaseEnterYourPhoneNumber.tr();
                               }
+                              return null;
                             }),
                          SizedBox(
                           height: 20.h,
@@ -151,23 +152,22 @@ class SignUpScreen extends StatelessWidget {
                          SizedBox(
                           height: 50.h,
                         ),
-                        MaterialButtonCusttom(
+                        MaterialButtonCustom(
                           color: AppColors.Orange,
-                          textcolor: AppColors.white,
+                          textColor: AppColors.white,
                           text:LocaleKeys.SingIn.tr(),
                           onPressed: () {
                             if (cubit.singFormKey.currentState!.validate()) {
-                              cubit.signUseFirebase().then((value) => {
-                              Fluttertoast.showToast(
-                              msg: "SignUp Success ",
-                              backgroundColor:AppColors.Orange,
-                              fontSize: 15,
-                              toastLength: Toast.LENGTH_SHORT,
-                              textColor: AppColors.white),
-                              });
+                              cubit.signUseFirebase();
                               if(state is UserSignSuccessSate){
-                                Navigation.push(context, const LoginScreen());
-                              }
+                                  Navigation.push(context, const LoginScreen());
+                              Fluttertoast.showToast(
+                                  msg: "SignUp Success ",
+                                  backgroundColor:AppColors.Orange,
+                                  fontSize: 15,
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  textColor: AppColors.white);
+                            }
                             }
                           },
                         ),

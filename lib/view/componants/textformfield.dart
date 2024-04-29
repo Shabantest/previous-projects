@@ -35,6 +35,7 @@ class TextFormFiledEmail extends StatelessWidget {
           if ((value ?? '').isEmpty) {
             return LocaleKeys.EnterYourEmail.tr();
           }
+          return null;
         });
   }
 }
@@ -69,6 +70,7 @@ class TextFormUserName extends StatelessWidget {
           if ((value ?? '').isEmpty) {
          return LocaleKeys.EnterYourName.tr();
           }
+          return null;
         }
     );
   }

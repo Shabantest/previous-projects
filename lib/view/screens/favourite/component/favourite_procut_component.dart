@@ -12,7 +12,6 @@ class FavouriteProductCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: AppColors.deepGreen,
       ),
       child: Column(
         children: [
@@ -40,7 +39,7 @@ class FavouriteProductCustom extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   TextCustom(
-                    text: "  ${product.price?? 0}" ,
+                    text: " £ ${product.price?? 0}" ,
                     fontSize: 20.sp,
                     color: AppColors.green,
                   ),
@@ -52,7 +51,7 @@ class FavouriteProductCustom extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed:onTap,
-                        icon: const Icon(Icons.delete,color: AppColors.red,size: 20,),
+                        icon: const Icon(Icons.delete_forever,color: AppColors.red,size: 20,),
                       ),
                     ],
                   ),

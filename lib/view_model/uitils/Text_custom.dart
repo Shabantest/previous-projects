@@ -21,7 +21,6 @@ class TextCustom extends StatelessWidget {
           fontWeight:fontWeight ,
         ),
       textAlign: textAlign,
-
     );
   }
 }

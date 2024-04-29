@@ -12,23 +12,27 @@ import 'on_bording.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
-class _SplashScreenState extends State<SplashScreen> {
 
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2,),
-          () {
-          if(SharedHelper.get(key: SharedKeys.userToken)==null){
-            Navigation.pushAndremove(context, const OnBoarding());
-          }else{
-            Navigation.pushAndremove(context, const BottomNavigationCustom());
-          }
-      },);
+    Future.delayed(
+      const Duration(
+        seconds: 2,
+      ),
+      () {
+        SharedHelper.get(key: SharedKeys.userToken) == null
+            ? Navigation.pushAndremove(context, const OnBoarding())
+            : Navigation.pushAndremove(context, const BottomNavigationCustom());
+      },
+    );
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +50,7 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ],
         ),
-        ),
+      ),
     );
   }
 }

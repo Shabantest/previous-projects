@@ -24,7 +24,7 @@ class CheckOutOptionsWidget extends StatelessWidget {
                 Expanded(
                     child: TextCustom(
                   text: name ?? '',
-                  fontSize: 20.sp,
+                  fontSize: 15.sp,
                   color: AppColors.black,
                 )),
                 TextCustom(

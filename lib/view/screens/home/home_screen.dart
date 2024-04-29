@@ -9,8 +9,9 @@ import 'package:graduation_project/view/screens/home/sections/groceries_section.
 import 'package:graduation_project/view/screens/home/sections/section_bar.dart';
 import 'package:graduation_project/view_model/cubit/produt_cubit/product_cubit.dart';
 import 'package:graduation_project/view_model/cubit/produt_cubit/product_states.dart';
+import 'package:graduation_project/view_model/data/local/shared_keyes.dart';
 import '../../../i10/local_keys.g.dart';
-import '../../../view_model/uitils/Colors.dart';
+import '../../../view_model/data/local/shared_helper.dart';
 import '../../../view_model/uitils/icons.dart';
 import '../../../view_model/uitils/images.dart';
 
@@ -30,48 +31,50 @@ class _HomeScreenState extends State<HomeScreen> {
     var  cubit=ProductCubit.get(context);
     cubit.getProducts();
   }
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<ProductCubit, ProductStates>(
       builder: (context, state) {
         var cubit=ProductCubit.get(context);
         return Scaffold(
-          backgroundColor: AppColors.deepGreen,
           body: Padding(
             padding:  EdgeInsets.symmetric(horizontal: 12.w),
             child: SafeArea(
                 child: Column(
-              children: [
+                  children: [
                 const SectionBAr(),
                 SearchBar(
                   controller: cubit.searchController,
                   keyboardType: TextInputType.text,
+                  onTap: (){
+                    var token =SharedHelper.get(key: SharedKeys.userName);
+                    print(token);
+                  },
                   onChanged: (value) {
                     cubit.search(value);
                   },
                   hintText: LocaleKeys.Search.tr(),
                   leading: AppIcons.search,
                 ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    CarouselSlider(
+                      items: [
+                        Image.asset(AppImages.vegetables),
+                      ],
+                      options: CarouselOptions(
+                        autoPlay: true,
+                        aspectRatio: 4,
+                        animateToClosest: true,
+                        autoPlayCurve: Curves.linear,
+                        disableCenter: true,
+                      ),
+                    ),
                 Expanded(
                   child: ListView(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    children: [Column(
                       children: [
-                    Column(
-                      children: [
-                         SizedBox(
-                          height: 10.h,
-                        ),
-                        CarouselSlider(
-                          items: [
-                            Image.asset(AppImages.vegetables),
-                          ],
-                          options: CarouselOptions(
-                            autoPlay: true,
-                            aspectRatio: 4,
-                            animateToClosest: true,
-                            autoPlayCurve: Curves.linear,
-                            disableCenter: true,
-                          ),
-                        ),
                         const ExclusiveOfferSection(),
                          SizedBox(
                           height: 20.h,
@@ -87,10 +90,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         // MeetSection(),
                       ],
                     ),
-                  ]),
-                ),
               ],
-            )),
+                  ),
+                ),
+                              ],
+                            )),
           ),
         );
       },

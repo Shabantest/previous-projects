@@ -9,5 +9,6 @@ class UserLoginLoadingSate extends UserStates{}
 class UserCheckPassSate extends UserStates{}
 class AddUserLodaingState extends UserStates{}
 class UserLoginLoadingState extends UserStates{}
+class CheckInterNetAccessState extends UserStates{}
 
 

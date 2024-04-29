@@ -7,7 +7,6 @@ import 'package:graduation_project/view/componants/text_button.dart';
 import 'package:graduation_project/view_model/data/local/shared_helper.dart';
 import 'package:graduation_project/view_model/data/local/shared_keyes.dart';
 import '../../../../model/account_model/accountOptions_model.dart';
-import '../../../../model/account_model/user_data_model.dart';
 import '../../../../view_model/uitils/Colors.dart';
 import '../../../../view_model/uitils/navigation.dart';
 import '../../../view_model/cubit/user_cubit/user_cubit.dart';
@@ -22,7 +21,6 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.deepGreen,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -31,9 +29,8 @@ class AccountScreen extends StatelessWidget {
               child: Column(
                 children: [
                   BlocBuilder<UserCubit, UserStates>(
-                    builder: (context, state) {
-                      var cubit = UserCubit.get(context);
-                      return UserDataWidget();
+                    builder: (context, state)  {
+                      return  UserDataWidget();
                     },
                   ),
                    SizedBox(
@@ -144,14 +141,14 @@ class AccountScreen extends StatelessWidget {
                    SizedBox(
                     height: 10.h,
                   ),
-                  MaterialButtonCusttom(
+                  MaterialButtonCustom(
                     onPressed: () {
-                      SharedHelper.clear();
                       Navigation.pushAndremove(context, const LoginScreen());
                     },
+                    icon: Icons.logout,
                     text: LocaleKeys.LogOut.tr(),
                     color: AppColors.wihte2,
-                    textcolor: AppColors.green,
+                    textColor: AppColors.green,
                   ),
                 ],
               ),

@@ -8,12 +8,11 @@ class UserData{
   String? location;
 
   UserData({this.image, this.name, this.email,this.location,this.phone});
+  factory UserData.fromJson(Map<String,dynamic> json){
+    return UserData(
+        name :json['name'],
+        email :json['email'],
+        phone :json['phoneNumber'],
+    );
+  }
 }
- List<UserData> users=[
-
-   UserData(
-     image: AppImages.userImage,
-     email: 'sbosafoona@gmail.com',
-     name: 'Shaban ',
-   ),
- ];

@@ -1,5 +1,5 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,8 +8,6 @@ import 'package:graduation_project/view_model/data/local/shared_helper.dart';
 import 'package:graduation_project/view_model/data/local/shared_keyes.dart';
 import 'package:graduation_project/view_model/firebase/firebase_keys.dart';
 import 'package:graduation_project/view_model/uitils/Colors.dart';
-import '../../../model/account_model/user_data_model.dart';
-import '../../uitils/images.dart';
 import 'user_state.dart';
 
 class UserCubit extends Cubit<UserStates> {
@@ -33,34 +31,36 @@ class UserCubit extends Cubit<UserStates> {
     emit(UserCheckPassSate());
   }
 
-  List<UserData> allUsers = [];
   Future<void> signUseFirebase() async {
     emit(AddUserLodaingState());
     await FirebaseAuth.instance
         .createUserWithEmailAndPassword(
       email: signEmailController.text,
       password: signPasswordController.text,
-    ).then((value) async {
-      emit(UserSignSuccessSate());
-       await  FirebaseFirestore.instance.collection(FirebaseKeys.users).doc(value.user?.email).set(
-            {
-              'name': signUserNameController.text,
-              'id': value.user?.uid,
-              'email': signEmailController.text,
-              'password': signPasswordController.text,
-              'phoneNumber': phoneNumberController.text,
-
-            });
+    )
+        .then(
+      (value) async {
+        emit(UserSignSuccessSate());
+        await FirebaseFirestore.instance
+            .collection(FirebaseKeys.users)
+            .doc(value.user?.email)
+            .set({
+          'name': signUserNameController.text,
+          'id': value.user?.uid,
+          'email': signEmailController.text,
+          'password': signPasswordController.text,
+          'phoneNumber': phoneNumberController.text,
+        });
       },
     ).catchError((error) {
       emit(UserSignErrorSate());
       Fluttertoast.showToast(
           timeInSecForIosWeb: 10,
           msg: error.toString(),
-      backgroundColor:AppColors.red,
-      fontSize: 15,
-      toastLength: Toast.LENGTH_SHORT,
-      textColor: AppColors.white);
+          backgroundColor: AppColors.red,
+          fontSize: 15,
+          toastLength: Toast.LENGTH_SHORT,
+          textColor: AppColors.white);
       throw error;
     });
   }
@@ -71,31 +71,36 @@ class UserCubit extends Cubit<UserStates> {
         .signInWithEmailAndPassword(
       email: loginEmailController.text,
       password: loginPasswordController.text,
-    ).then(
-      (value) async{
+    )
+        .then(
+      (value) async {
         await SharedHelper.set(key: SharedKeys.userId, value: value.user?.uid);
-        await SharedHelper.set(key: SharedKeys.userEmail, value: value.user?.email);
-        await SharedHelper.set(key: SharedKeys.userToken, value: value.user?.uid);
-        await SharedHelper.set(key: SharedKeys.userName, value:signUserNameController.text);
+        await SharedHelper.set(
+            key: SharedKeys.userEmail, value: value.user?.email);
+        await SharedHelper.set(
+            key: SharedKeys.userToken, value: value.user?.uid);
+        await SharedHelper.set(
+            key: SharedKeys.userName,value:signUserNameController.text);
         emit(UserLoginSuccessState());
-        Fluttertoast.showToast(
-            msg: "login success ",
-            backgroundColor:AppColors.Orange,
-            fontSize: 15,
-            toastLength: Toast.LENGTH_SHORT,
-            textColor: AppColors.white);
       },
     ).catchError((error) {
       emit(UserLoginErrorSate());
       print(error.toString());
       Fluttertoast.showToast(
-        timeInSecForIosWeb: 10,
+          timeInSecForIosWeb: 10,
           msg: error.toString(),
-          backgroundColor:AppColors.red,
+          backgroundColor: AppColors.red,
           fontSize: 15,
           toastLength: Toast.LENGTH_SHORT,
           textColor: AppColors.white);
       throw error;
     });
+  }
+   ConnectivityResult?  checkConnection;
+  Future<void> checkConnectivity() async {
+    ConnectivityResult connectivityResult =
+    (await Connectivity().checkConnectivity()) as ConnectivityResult;
+      checkConnection =connectivityResult;
+      emit(CheckInterNetAccessState());
   }
 }

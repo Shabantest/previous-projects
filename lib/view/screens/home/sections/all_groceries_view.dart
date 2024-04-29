@@ -18,45 +18,50 @@ class AllGroceriesView extends StatelessWidget {
     return BlocBuilder<ProductCubit,ProductStates>(builder: (context, state) {
       var cubit= ProductCubit.get(context);
       var cartCubit= ProductMangeCubit.get(context);
-      return Scaffold(
-        backgroundColor: AppColors.deepGreen,
-        body:  SafeArea(
-          child: Center(
-            child: Column(
-              children: [
-                TextCustom(
-                  text: LocaleKeys.Groceries.tr(),
-                  fontWeight: FontWeight.bold,
-                  color: CupertinoColors.black,
-                  fontSize: 24,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Expanded(
-                  child: ListView.separated(
-                    padding: const EdgeInsetsDirectional.only(start: 70),
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) =>
-                        GroceriesProductCustom(
-                            onTap: () {
-                              cartCubit.addToFavourite(cubit.groceriesProducts[index],);
-                            },
-                            onPressed: () {
-                              cartCubit.addToCart(cubit.groceriesProducts[index]);
-                            },
-                            product: cubit.groceriesProducts[index]),
-                    separatorBuilder: (context, index) => const SizedBox(
-                      height: 20,
-                    ),
-                    itemCount: cubit.groceriesProducts.length,
+      if(state is GetProductLoadingState){
+        return const CircularProgressIndicator(
+          color:  AppColors.green,
+        );
+      }else{
+        return Scaffold(
+          body:  SafeArea(
+            child: Center(
+              child: Column(
+                children: [
+                  TextCustom(
+                    text: LocaleKeys.Groceries.tr(),
+                    fontWeight: FontWeight.bold,
+                    color: CupertinoColors.black,
+                    fontSize: 24,
                   ),
-                ),
-      ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Expanded(
+                    child: ListView.separated(
+                      padding: const EdgeInsetsDirectional.only(start: 70),
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) =>
+                          GroceriesProductCustom(
+                              onTap: () {
+                                cartCubit.addToFavourite(cubit.groceriesProducts[index],);
+                              },
+                              onPressed: () {
+                                cartCubit.addToCart(cubit.groceriesProducts[index]);
+                              },
+                              product: cubit.groceriesProducts[index]),
+                      separatorBuilder: (context, index) => const SizedBox(
+                        height: 20,
+                      ),
+                      itemCount: cubit.groceriesProducts.length,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      );
+        );
+      }
     },);
   }
 }

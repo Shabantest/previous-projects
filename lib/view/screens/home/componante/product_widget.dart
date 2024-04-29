@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,7 +10,6 @@ import '../../../../model/product_model/product_model.dart';
 import '../../../../view_model/cubit/produt_cubit/product_cubit.dart';
 import '../../../componants/floating_action_button.dart';
 
-// ignore: must_be_immutable
 class ProductWidget extends StatelessWidget {
   final ProductModel product;
   void Function()? onPressed;
@@ -42,11 +42,13 @@ class ProductWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Center(child: Image.network(product.image ?? '', width:imageWidth,height: imageHeight,fit: BoxFit.cover,)),
-                    TextCustom(
-                      text: product.name?.tr(),
-                      fontSize: 15.sp,
-                      color: AppColors.black,
-                      fontWeight: FontWeight.bold,
+                    Flexible(
+                      child: TextCustom(
+                        text: product.name?.tr(),
+                        fontSize: 15.sp,
+                        color: AppColors.black,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                      SizedBox(height: 5.h,),
                     TextCustom(
@@ -59,7 +61,7 @@ class ProductWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextCustom(
-                          text: "  ${product.price?? 0}" ,
+                          text: " £ ${product.price?? 0}" ,
                           fontSize: 15.sp,
                           color: AppColors.green,
                         ),
@@ -118,11 +120,13 @@ class GroceriesProductCustom extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Image.network(product.image ?? '',width: 80.w,height: 80.h,),
-                    TextCustom(
-                      text: product.name?.tr(),
-                      fontSize: 20.sp,
-                      color: AppColors.black,
+                    Image.network(product.image ?? '',width: 100.w,height: 70.h,),
+                    Flexible(
+                      child: TextCustom(
+                        text: product.name?.tr(),
+                        fontSize: 20.sp,
+                        color: AppColors.black,
+                      ),
                     ),
                   ],
                 ),
