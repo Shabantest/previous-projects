@@ -8,9 +8,8 @@ import 'package:graduation_project/view/componants/material_Button.dart';
 import 'package:graduation_project/view_model/cubit/user_cubit/user_cubit.dart';
 import 'package:graduation_project/view_model/cubit/user_cubit/user_state.dart';
 import 'package:graduation_project/view_model/uitils/Colors.dart';
-import 'package:graduation_project/view_model/uitils/images.dart';
-import '../../../../i10/local_keys.g.dart';
-import '../../../../view_model/uitils/Text_custom.dart';
+import '../../../i10/local_keys.g.dart';
+import '../../../view_model/uitils/Text_custom.dart';
 
 class DeliveryScreen extends StatelessWidget {
    DeliveryScreen({super.key});
