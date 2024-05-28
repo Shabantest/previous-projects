@@ -1,6 +1,6 @@
 # todo_app
 
-A new Flutter project.
+the ToDo App use in set and save your note and date for the note and detalis and name by simple user experince ....
 
 ## Getting Started
 
